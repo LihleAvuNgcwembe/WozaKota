@@ -1,0 +1,1 @@
+<img src="{{asset('assets/img/Woza-Woza-Kota.svg')}}" alt="My SVG Icon">
