@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <a href="{{route('index')}}" class="text-gray-600 dark:text-gray-400 hover:text-gray-900">X</a>
+    <a href="{{route('menu')}}" class="text-gray-600 dark:text-gray-400 hover:text-gray-900">X</a>
     <img src="{{asset('assets/img/Woza-Woza-Kota.svg')}}" alt="My SVG Icon">
 
     <form method="POST" action="{{ route('login') }}">

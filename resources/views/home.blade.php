@@ -882,7 +882,6 @@
 
 
         </div>
-
         @include('footer')
     </div>
 </body>

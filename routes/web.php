@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Inventory;
 use Illuminate\Support\Facades\Auth;
@@ -36,15 +37,30 @@ Route::prefix('admin')->group(function () {
         Route::get('/inventory', [InventoryController::class, 'index'])->name('admin.inventory');
         Route::get('/inventory-create', [InventoryController::class, 'create'])->name('.inven.create.form');
         Route::post('/inventory-store', [InventoryController::class, 'store'])->name('inventory.store');
-        Route::get('/inventory-update',[Inventory::class, 'edit'])->name('inventory.edit');
+        Route::get('/inventory-update', [InventoryController::class, 'edit'])->name('inventory.edit');
         /*-------------Product----------------*/
+        Route::get('/products', [ProductController::class, 'index'])->name('admin.product');
     });
 });
 /* -----------------------------End Admin Route--------------------------------------------------------*/
 
-Route::get('/', [MenuController::class, 'index'])->name('index');
 
-Route::get('/menu', [MenuController::class, 'menu'])->name('menu');
+Route::get('/',[MenuController::class, 'index'])->name('menu');
+Route::get('add-to-cart/{id}', [MenuController::class, 'addToCart'])->name('add-to-cart');
+Route::delete('remove-from-cart', [MenuController::class, 'remove'])->name('remove_from_cart');
+Route::patch('update-cart', [MenuController::class, 'update'])->name('update_cart');
+
+Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
+Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+
+Route::get('/contact-us', function(){
+    return view('contact');
+})->name('contact-us');
+
+Route::get('/about-us', function(){
+    return view('about-us');
+})->name('aboutUs');
 
 /*Route::get('/', function () {
     return view('welcome');

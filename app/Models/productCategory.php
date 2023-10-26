@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Category extends Model
+class productCategory extends Model
 {
     use HasFactory;
 
@@ -16,12 +16,12 @@ class Category extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'category_name',
+        'name',
     ];
 
-    public function inventories():HasMany
+    public function products (): HasMany
     {
-        return $this->hasMany(Inventory::class);
+        return $this->hasMany(Product::class);
     }
-   
+
 }

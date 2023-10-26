@@ -21,11 +21,11 @@ class Product extends Model
         'price',
         'status',
         'category',
-        'picture'
+        'image'
     ];
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(productCategoryCategory::class);
     }
 }
