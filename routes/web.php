@@ -6,6 +6,8 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Inventory;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +52,7 @@ Route::get('add-to-cart/{id}', [MenuController::class, 'addToCart'])->name('add-
 Route::delete('remove-from-cart', [MenuController::class, 'remove'])->name('remove_from_cart');
 Route::patch('update-cart', [MenuController::class, 'update'])->name('update_cart');
 
-Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
+Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->middleware(['auth', 'verified'])->name('checkout');
 Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
 Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
 
@@ -67,7 +69,10 @@ Route::get('/about-us', function(){
 });*/
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = auth()->user();
+    $orderhistory = Order::all()->where('user_id', $user->id)->sortByDesc("created_at");
+    
+    return view('dashboard', compact('orderhistory'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

@@ -4,9 +4,9 @@
         class="text-white bg-[#054979] hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 mr-2">
         @if (Route::has('login'))
             @auth
-                <li><a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a></li>
+                <a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a>
             @else
-                <li><a href="{{ route('login') }}">Login/Sign-Up</a></li>
+                <a href="{{ route('login') }}">Login/Sign-Up</a></li>
             @endauth
         @endif
     </button>
@@ -28,7 +28,7 @@
             <ul class="flex flex-col justify-item-center font-medium p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm  md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
                 style="background-color: #054979">
                 <li class="lg:w-52 sm:-100 text-center ">
-                    <a href="#" class="block py-2 pl-3 pr-4 text-white  rounded hover:bg-[#005a92]"
+                    <a href="{{route('menu')}}" class="block py-2 pl-3 pr-4 text-white  rounded hover:bg-[#005a92]"
                         style="font-family: 'trebuchet MS', sans-serif" aria-current="page">
                         Home
                     </a>
@@ -51,7 +51,7 @@
     </div>
 </nav>
 <!-- drawer init and toggle -->
-<div class="container-fluid bg-[#08415c] p-2 mb-2 text-right">
+<div class="container-fluid bg-[#08415c] p-2 text-right">
     <button
         class="text-white bg-[#054979] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-2   dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         type="button" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example"
@@ -108,7 +108,7 @@
                                     </h3>
                                     <p class="ml-4">{{ $details['price'] }}</p>
                                 </div>
-                                <p class="mt-1 text-sm text-gray-500">{{ $details['category'] }}</p>
+                                <p class="mt-1 text-sm text-gray-500">{{ $details['category']}}</p>
                             </div>
 
                             <div class="flex flex-1 items-end justify-between text-sm">

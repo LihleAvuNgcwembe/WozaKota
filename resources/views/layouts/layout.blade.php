@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+     <link rel="stylesheet" href="{{ asset('assets/css/stylehome.css') }}">
     <script src="https://kit.fontawesome.com/2b9a291b91.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2b9a291b91.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -34,7 +35,7 @@
     </style>
 </head>
 
-<body class="bg-[#abdbe3]">
+<body class="bg-[#abdbe3] h-fit">
     @include('include.navbar')
 
     @if (session('success'))
@@ -44,16 +45,7 @@
                 <div class="ml-3 text-sm font-medium">
                     {{ session('success') }}
                 </div>
-                <button type="button"
-                    class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"
-                    data-dismiss-target="#alert-3" aria-label="Close">
-                    <span class="sr-only">Close</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                </button>
+             
             </div>
         </div>
     @endif

@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('main')
-    <div class="container-fluid">
+    <div class="container-fluid mt-2">
         <div class="container  mx-auto px-2 sm:justify-items-center">
 
             <div class=' bg-white text-center p-2 mb-2  rounded-lg border border-gray-200'>

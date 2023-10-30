@@ -1,213 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <link rel="stylesheet" href="{{ asset('assets/css/stylehome.css') }}">
-    <!--<link rel="stylesheet" href="menu.css">-->
-    <script src="https://kit.fontawesome.com/2b9a291b91.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+@extends('layouts.layout')
+@section('main')
+<section class="bg-white dark:bg-gray-900 bg-cover" style="background-image: url({{asset('assets/img/rm222-mind-14.jpg')}});">
+    <div class="container px-6 py-12 mx-auto">
+        <div class="text-center">
+            <h2 class=" font-bold text-white text-6xl dark:text-blue-400">Contact us </h2>
 
-<body>
+            <h1 class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">Get in touch</h1>
 
-    <div id="page-container">
-        <div id="content-wrap">
-
-            <!--page content-->
-
-            <section id="PAGE-HEADER">
-
-                <div class="inside">
-                    <div
-                        style="font-family: 'trebuchet MS', sans-serif; font-size: 40px; text-align: left; color: #faf9f6;">
-                        Woza Woza Kota Place</div>
-
-                    <div class="con">
-
-                        <button
-                            style="font-family: 'trebuchet MS', sans-serif; font-size: 15px; border: none; background-color: #054979; color: #fff;
-                        border-radius: 5px; padding: 10px">
-
-                            <a href="{{route('login')}}" style="color: #fff; text-decoration: none;">Sign In</a></button>
-
-                    </div>
-                </div>
-
-            </section>
-
-            <section id="NAVIGATION">
-                <div class = "container1">
-                    <li style="list-style: none;"><a href = "{{route('menu')}}"
-                            style=" color: #faf9f6; font-family: 'trebuchet MS', sans-serif;">home</a></li>
-                    <li style="list-style: none;"><a href = "Find-us.html"
-                            style=" color: #faf9f6; font-family: 'trebuchet MS', sans-serif;">find us</a>
-                        <!--<div class="sub-menu1">
-                <ul>
-                    <li><a href = "#" style="font-family: 'trebuchet MS', sans-serif; color: #212121;">main menu</a></li>
-                    <li><a href = "#" style="font-family: 'trebuchet MS', sans-serif; color: #212121;">kotas</a></li>
-                    <li><a href = "#" style="font-family: 'trebuchet MS', sans-serif; color: #212121;">burgers</a></li>
-                    <li><a href = "#" style="font-family: 'trebuchet MS', sans-serif; color: #212121;">sandwhiches</a></li>
-                    <li><a href = "#" style="font-family: 'trebuchet MS', sans-serif; color: #212121;">drinks</a></li>
-                    <li><a href = "#" style="font-family: 'trebuchet MS', sans-serif; color: #212121;">sides/extras</a></li>
-                </ul>
-            </div> -->
-                    </li>
-                    <li style="list-style: none;"><a href = "{{route('aboutUs')}}"
-                            style=" color: #faf9f6; font-family: 'trebuchet MS', sans-serif;">about us</a></li>
-                </div>
-            </section>
-
-            <section id="CART-DELIVERY">
-
-                <div class="aboutHeading">
-                    <h1>Contact Us</h1>
-                </div>
-            </section>
-
+            <p class="mt-3 text-gray-500 dark:text-gray-400">We are ready to chat</p>
         </div>
 
-        <!--
+        <div class="grid grid-cols-1 gap-12 mt-10 md:grid-cols-2 lg:grid-cols-3">
+            <div class="flex flex-col items-center justify-center text-center">
+                <span class="p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                    </svg>
+                </span>
 
-        <section id="contact-us">
-            <div class="contain1">
-                <div class="contactINFO">
-
-                    <div class="box1">
-
-                   
-                        <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                            <div class="text">
-                                <h2>Address</h2>
-                                <p>10 ridge road</p>
-                            </div>
-
-                      
-                        <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                            <div class="text">
-                                <h2>Phone</h2>
-                                <p>070 6008 6754</p>
-                            </div>
-
-                    
-                        <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                            <div class="text">
-                                <h2>Email</h2>
-                                <p>Woza Woza Kota Place</p>
-                            </div>
-
-                    </div>
-
-                    <div class="contact-pic">
-
-                    </div>
-
-                </div>
+                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Email</h2>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">You can communicate with us via email.</p>
+                <p class="mt-2 text-blue-800  dark:text-blue-400">wozawozakotaplace@gmail.com</p>
             </div>
-        </section>
 
-        -->
-        <section id="CON-DETAILS">
-            <div class="contact-box">
+            <div class="flex flex-col items-center justify-center text-center">
+                <span class="p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                </span>
+                
+                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Location</h2>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">Find us Here</p>
+                <p class="mt-2 text-blue-800 dark:text-blue-400">ridge road, glen austin midrand</p>
+            </div>
 
-                <div class="box1">
-
-                    <div class="icon"><i id="icon" class="fa fa-map-marker" aria-hidden="true"></i></div>
-                    <div class="menupic">
-
-                        <table>
-
-                            <tr>
-                                <th>
-                                    <h2>Address</h2>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <td>10 ridge road, glen austin midrand</td>
-                            </tr>
-
-                        </table>
-
-                    </div>
-                </div>
-
-                <div class="box2">
-
-                    <div class="icon"><i class="fa fa-phone" aria-hidden="true" align></i></div>
-                    <div class="menupic">
-
-                        <table>
-
-                            <tr>
-                                <th>
-                                    <h2>Phone</h2>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <td>011 234 5678</td>
-                            </tr>
-
-                        </table>
-
-                    </div>
-                </div>
-
-
-                <div class="box3">
-
-                    <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                    <div class="menupic">
-
-                        <table>
-
-                            <tr>
-                                <th>
-                                    <h2>Email</h2>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <td>wozawozakotaplace@gmail.com</td>
-                            </tr>
-
-                        </table>
-
-                    </div>
-                </div>
-                <!--
-                <div class="kota-img">
-                        <img class="kotaPIC" src="contact-kota.jpg" alt="">
-              </div>
-  -->
-
-
-        </section>
-
-        <section id="BOTTOM">
-            <footer>
-                <div class="kontain">
-                    <div class="row">
-
-                        <div class="footer-column">
-                            <h2>A Taste You'll Remember</h2>
-                            <ul>
-                                <li><a href="contact-details.html">Contact Us</a></li>
-                                <li><a href="privacy1.html">Privacy Policy</a></li>
-                                <li><a href="terms.html">Terms of use</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </footer>
-        </section>
-
-
-        </section>
-
-</body>
-
-</html>
+            <div class="flex flex-col items-center justify-center text-center">
+                <span class="p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                    </svg>
+                </span>
+                
+                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Phone</h2>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">From Monday to Friday</p>
+                <p class="mt-2 text-blue-800 dark:text-blue-400">070 6008 6754</p>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection

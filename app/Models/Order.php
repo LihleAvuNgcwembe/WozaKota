@@ -4,34 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Product extends Model
+class Order extends Model
 {
     use HasFactory;
-
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'product_name',
-        'description',
-        'price',
+        'user_id',
+        'total_price',
         'status',
-        'category',
-        'image'
+        'session_id',
+        'order_no'
     ];
 
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(productCategoryCategory::class);
-    }
-
-    public function orderItem(): HasMany
+    public function orderitems (): HasMany
     {
         return $this->hasMany(OrderItem::class);
     }
