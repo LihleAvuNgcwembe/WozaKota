@@ -1,0 +1,123 @@
+*{
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+
+html {
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-image: url(images/MicrosoftTeams-image.png);
+    background-repeat: no-repeat;
+    background-size: 8000vh;
+    background-position: 10px;
+}
+
+/* Reset default browser styles */
+body, h1, h4 {
+    margin: 20px;
+    padding: 0px;
+}
+
+/* Container styling */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    align-items: center;
+}
+
+/* Card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-color: #333;
+    border-width: 2px;
+    align-items: center;
+    display:block;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+    border: 0.5px solid #000000
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Product info styling */
+.product-info {
+    display: flex;
+    align-items: center;
+}
+
+.product-info img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Button styling */
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #FF0000;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-success {
+    background-color: #00FF00;
+    color: #fff;
+}
+
+.btn-success:hover{
+    background-color: #333;
+}
+
+.btn-danger:hover{
+    background-color: #333;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+/* Form input styling */
+input.form-control {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 50px;
+    text-align: center;
+}
+.card-header{
+    text-align: center;
+    padding-top: 25px;
+    font-size: 25px;
+    font-weight: 700;
+}
+@media (min-width: 375px) {
+    html{
+        margin: -30px;
+    }
+    .container{
+        padding: 0px;
+    }    
+}
