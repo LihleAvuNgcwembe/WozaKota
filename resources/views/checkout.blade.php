@@ -6,27 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Woza Woza Kota Place</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="{{ asset('assets/css/checkout.css') }}"">
+    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />-->
 </head>
 
 <body>
-    @if (session('success'))
-        <div class="container mx-auto">
-            <div id="alert-3"class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
-                role="alert">
-                <div class="ml-3 text-sm font-medium">
-                    {{ session('success') }}
-                </div>
-               
+    <!--@if (session('success'))
+-->
+    <div class="container mx-auto">
+        <div id="alert-3"class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            role="alert">
+            <div class="ml-3 text-sm font-medium">
+
             </div>
+
         </div>
-    @endif
+    </div>
+    <!--
+@endif-->
 
     <div class="container">
         <div class='row'>
-            <h1>Woza Woza Kota Place</h1>
             <div class='col-md-12'>
                 <div class="card">
                     <div class="card-header">

@@ -28,7 +28,7 @@
             <ul class="flex flex-col justify-item-center font-medium p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm  md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
                 style="background-color: #054979">
                 <li class="lg:w-52 sm:-100 text-center ">
-                    <a href="{{route('menu')}}" class="block py-2 pl-3 pr-4 text-white  rounded hover:bg-[#005a92]"
+                    <a href="{{ route('menu') }}" class="block py-2 pl-3 pr-4 text-white  rounded hover:bg-[#005a92]"
                         style="font-family: 'trebuchet MS', sans-serif" aria-current="page">
                         Home
                     </a>
@@ -87,9 +87,15 @@
     <!-- chopping cart content -->
     <div class="flow-root h-[25rem] overflow-auto">
         <ul role="list" class="-my-6 divide-y divide-gray-200">
-            @php $total = 0 @endphp
+            @php
+                $total = 0;
+                $sub_total = 0;
+            @endphp
+
             @foreach ((array) session('cart') as $id => $details)
-                @php $total += $details['price'] * $details['quantity'] @endphp
+                @php
+                    $total += $details['price'] * $details['quantity'];
+                @endphp
             @endforeach
 
             @if (session('cart'))
@@ -108,7 +114,7 @@
                                     </h3>
                                     <p class="ml-4">{{ $details['price'] }}</p>
                                 </div>
-                                <p class="mt-1 text-sm text-gray-500">{{ $details['category']}}</p>
+                                <p class="mt-1 text-sm text-gray-500">Sub Total: R{{ $sub_total = $details['price'] * $details['quantity'] }}</p>
                             </div>
 
                             <div class="flex flex-1 items-end justify-between text-sm">
