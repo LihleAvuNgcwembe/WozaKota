@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactUsFormController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProductController;
@@ -46,27 +47,36 @@ Route::prefix('admin')->group(function () {
 });
 /* -----------------------------End Admin Route--------------------------------------------------------*/
 
-
-Route::get('/',[MenuController::class, 'index'])->name('menu');
+/* -----------------------------Menu Route--------------------------------------------------------*/
+Route::get('/menu',[MenuController::class, 'index'])->name('menu');
 Route::get('add-to-cart/{id}', [MenuController::class, 'addToCart'])->name('add-to-cart');
 Route::delete('remove-from-cart', [MenuController::class, 'remove'])->name('remove_from_cart');
 Route::patch('update-cart', [MenuController::class, 'update'])->name('update_cart');
+/* ----------------------------- End Menu Route--------------------------------------------------------*/
 
+/* -----------------------------Checkout Route--------------------------------------------------------*/
 Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->middleware(['auth', 'verified'])->name('checkout');
 Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
 Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+/* -----------------------------End Checkout Route--------------------------------------------------------*/
 
+/* -----------------------------Contact Route--------------------------------------------------------*/
 Route::get('/contact-us', function(){
     return view('contact');
 })->name('contact-us');
+
+Route::get('/contact-us-form',[ContactUsFormController::class, 'show'])->name('contact-form');
+
+Route::post('/contat-us-form',[ContactUsFormController::class, 'store'])->name('contact-store');
+/* -----------------------------End Contact Route--------------------------------------------------------*/
 
 Route::get('/about-us', function(){
     return view('about-us');
 })->name('aboutUs');
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::get('/', function () {
+    return view('frontpage');
+});
 
 Route::get('/dashboard', function () {
     $user = auth()->user();
@@ -84,3 +94,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Auth::routes();
+
+

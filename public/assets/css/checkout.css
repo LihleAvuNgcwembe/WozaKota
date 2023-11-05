@@ -23,7 +23,7 @@ body, h1, h4 {
 /* Container styling */
 .container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 1.8rem auto;
     padding: 30px;
     font-family: Arial, sans-serif;
     align-items: center;
@@ -89,6 +89,7 @@ th {
 .btn-success {
     background-color: #00FF00;
     color: #fff;
+    text-decoration: none;
 }
 
 .btn-success:hover{

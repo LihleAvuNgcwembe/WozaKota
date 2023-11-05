@@ -12,10 +12,10 @@
                 @foreach ($products as $product)
                     <div
                         class="mx-auto mb-2 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
+                        
                             <img class="p-8 rounded-t-lg w-full h-60" src="{{ asset('storage/image/product') }}/{{ $product->image }}"
                                 alt="product image" />
-                        </a>
+                        
                         <div class="px-5 pb-5">
 
                             <h1 class="text-center p-3 text-xl mb-1">{{ $product->product_name }}</h1>
