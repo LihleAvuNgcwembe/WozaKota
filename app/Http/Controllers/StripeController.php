@@ -24,8 +24,13 @@ class StripeController extends Controller
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $user = auth()->user();
         $productItems = [];
-        $randInt = rand(2, 50);
         $totalprice = 0;
+
+        //generating an order number
+        $lastOrderNo = Order::orderby("id",'desc')->first()->order_no;
+        $lastincrement =substr($lastOrderNo, -3);
+        $nowOrderNum = 'TXT'.date('Ymd').str_pad($lastincrement + 1, 3, 0, STR_PAD_LEFT);
+
         foreach (session('cart') as $id => $details) {
 
             $product_name = $details['product_name'];
@@ -64,7 +69,7 @@ class StripeController extends Controller
         $order->status = "unpaid";
         $order->total_price = $totalprice;
         $order->session_id = $session->id;
-        $order->order_no = $randInt;
+        $order->order_no = $nowOrderNum;
         $order->save();
 
         foreach (session('cart') as $id => $details) {

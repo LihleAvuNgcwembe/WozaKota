@@ -7,17 +7,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        @if (Session::has('Error'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ session::get('error') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
         <div class="d-flex">
             <a class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white"
-                href="{{ route('.inven.create.form') }}">
-                Add new item
+                href="{{ route('admin.user.create') }}">
+                Add User
             </a>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Inventory table</h6>
+                        <h6>User table</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -29,18 +35,11 @@
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Price
+                                            Email
                                         </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Category
-                                        </th>
-                                        <th
+                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Status
-                                        </th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Quantity
+                                            Order No
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -51,47 +50,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($inventory as $inven)
+                                    @foreach ($users as $user)
                                         <tr>
-
                                             <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div>
-                                                        <img src='{{asset('storage/image/inventory')}}/{{ $inven->image}}'
-                                                            class="avatar avatar-sm me-3" alt="user1">
-                                                    </div>
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $inven->inven_name }}</h6>
-
-                                                    </div>
-                                                </div>
+                                                <p class="text-xs font-weight-bold mb-0 text-left">
+                                                    {{ $user->name}}</p>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0 text-center">
-                                                    {{ $inven->inven_price }}</p>
+                                                <p class="text-xs font-weight-bold mb-0 px-3 text-center">{{ $user->email}}</p>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0 px-3">{{ $inven->category }}</p>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">{{ $inven->status }}</span>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold mb-0 text-center">{{ $inven->quantity }}
-                                                </p>
+            
+                                                <select name="category" id="" class="form-control" required>
+                                                    @foreach ($user->orders as $order)
+                                                        <option value="{{ $order->id }}">{{ $order->order_no }}</option>
+                                                    @endforeach
+                                                </select>
+                                                
+                                                <!--<p class="text-xs font-weight-bold mb-0 px-3"{$item->description}}</p>-->
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $inven->created_at->format('d-m-y') }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $user->created_at->format('d-m-y') }}</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="{{route('inventory.edit', $inven->id)}}" class=" btn btn-warning text-secondary font-weight-bold text-xs"
+                                                <a href="{{route('admin.user.edit',$user->id)}}" class="text-secondary btn btn-warning text-secondary font-weight-bold text-xs"
                                                     data-toggle="tooltip" data-original-title="Edit user">
                                                     Edit
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="{{route('inventory.delete', $inven->id)}}" class="btn btn-danger text-secondary font-weight-bold text-xs"
+                                                <a href="{{route('admin.user.delete', $user->id)}}" class="btn btn-danger text-secondary font-weight-bold text-xs"
                                                     data-toggle="tooltip" data-original-title="Edit user">
                                                     Delete
                                                 </a>
@@ -107,7 +96,7 @@
             </div>
         </div>
         <div class="d-flex">
-            {!! $inventory->links() !!}
+            {!! $users->links() !!}
         </div>
     </div>
 @endsection

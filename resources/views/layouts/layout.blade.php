@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/stylehome.css') }}">
     <script src="https://kit.fontawesome.com/2b9a291b91.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/2b9a291b91.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/Woza-Woza-Kota-Logo.png') }}">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
+   
     <style>
         * {
             box-sizing: border-box;
@@ -36,7 +35,7 @@
     </style>
 </head>
 
-<body class="bg-[#abdbe3] h-fit">
+<body class="bg-[#abdbe3]">
     @include('include.navbar')
 
     @if (session('success'))
@@ -98,6 +97,9 @@
         });
 
     });
+
 </script>
+
+@yield('script')
 
 </html>

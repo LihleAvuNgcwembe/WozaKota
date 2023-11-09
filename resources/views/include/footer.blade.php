@@ -6,7 +6,7 @@
                 <div class="footer-column">
                     <h2>A Taste You'll Remember</h2>
                     <ul>
-                        <li><a href="{{route('contact-form')}}">Contact Us</a></li>
+                        <li><a href="{{route('contact-form')}}">Contact Us Form</a></li>
                         <li><button type="button" data-modal-target="privacy" data-modal-toggle="privacy">Privacy Policy
                         </li></button>
                         <li><button type="button" data-modal-target="terms" data-modal-toggle="terms">Terms of

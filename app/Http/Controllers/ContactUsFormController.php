@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contactUs;
 use App\Models\ContactForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactUsFormController extends Controller
 {
@@ -18,15 +20,26 @@ class ContactUsFormController extends Controller
         $this->validate($request, [
             'name' => ['required'],
             'email' => ['required','email'],
-            'phone' => ['required','regex:^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$','min:10'],
+            'phone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
             'subject' => ['required'],
             'message' => ['required']
+        ],[
+            'name.required' => 'Name field required',
+            'email.required' => 'Email field required',
+            'email.email' => 'Please enter correct format',
+            'phone.required' => 'Phone field required',
+            'phone.regex:/^([0-9\s\-\+\(\)]*)$/' => 'Enter correct format',
+            'phone.min' => "10 digits required",
+            'subject.required' => 'Subject field required',
+            'message.required' => 'Message field required'
         ]);
 
         // store in database
-        ContactForm::create($request->all());
+        $contact = ContactForm::create($request->all());
+
+        Mail::to('ngcwembelihle@gmail.com')->send( new contactUs($contact));
 
         //return back to contact form
-        return back()->with('success', "Your message has been recieved, thank you for writing to us");
+        return back()->withInput()->with('success', "Your message has been recieved, thank you for writing to us");
     }
 }

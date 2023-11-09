@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactUsFormController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -40,9 +42,30 @@ Route::prefix('admin')->group(function () {
         Route::get('/inventory', [InventoryController::class, 'index'])->name('admin.inventory');
         Route::get('/inventory-create', [InventoryController::class, 'create'])->name('.inven.create.form');
         Route::post('/inventory-store', [InventoryController::class, 'store'])->name('inventory.store');
-        Route::get('/inventory-update', [InventoryController::class, 'edit'])->name('inventory.edit');
+        Route::get('/inventory-{id}-edit', [InventoryController::class, 'edit'])->name('inventory.edit');
+        Route::put('/inventory-{id}-update', [InventoryController::class, 'update'])->name('inventory.update');
+        Route::get('/inventory-{id}-delete',[InventoryController::class, 'destroy'])->name('inventory.delete');
         /*-------------Product----------------*/
         Route::get('/products', [ProductController::class, 'index'])->name('admin.product');
+        Route::get('/product-create',[ProductController::class, 'create'])->name('admin.product.create');
+        Route::post('/product-store', [ProductController::class, 'store'])->name('admin.product.store');
+        Route::get('/product-{id}-edit',[ProductController::class, 'edit'])->name('admin.product.edit');
+        Route::put('/product-{id}-update', [ProductController::class, 'update'])->name('admin.product.update');
+        Route::get('/product-{id}-delete', [ProductController::class, 'destroy'])->name('admin.producr.delete');
+        /*-------------Users----------------*/
+        Route::get('/users',[UserController::class, 'index'])->name('admin.user');
+        Route::get('/user-create', [UserController::class, 'create'])->name('admin.user.create');
+        Route::post('/user-store',[UserController::class, 'store'])->name('admin.user.store');
+        Route::get('/user-{id}-edit',[UserController::class,'edit'])->name('admin.user.edit');
+        Route::put('/user-{id}-update',[UserController::class, 'update'])->name('admin.user.update');
+        Route::get('/user-{id}-delete',[UserController::class, 'destroy'])->name('admin.user.delete');
+        /*-------------Admin----------------*/
+        Route::get('/admins', [AdminController::class, 'show'])->name('admin.admin');
+        Route::get('/admin-create', [AdminController::class, 'create'])->name('admin.create');
+        Route::post('/admin-store', [AdminController::class, 'store'])->name('admin.store');
+        Route::get('/admin-{id}-edit',[AdminController::class, 'edit'])->name('admin.edit');
+        Route::put('/admin-{id}-update',[AdminController::class, 'update'])->name('admin.update');
+        route::get('/admin-{id}-delete',[AdminController::class, 'destroy'])->name('admin.delete');
     });
 });
 /* -----------------------------End Admin Route--------------------------------------------------------*/
@@ -55,9 +78,10 @@ Route::patch('update-cart', [MenuController::class, 'update'])->name('update_car
 /* ----------------------------- End Menu Route--------------------------------------------------------*/
 
 /* -----------------------------Checkout Route--------------------------------------------------------*/
-Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->middleware(['auth', 'verified'])->name('checkout');
+Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->middleware(['auth'])->name('checkout');
 Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
 Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+Route::get('/success-collection',[CheckoutController::class, 'payUponCollection'])->name('success-collection');
 /* -----------------------------End Checkout Route--------------------------------------------------------*/
 
 /* -----------------------------Contact Route--------------------------------------------------------*/
@@ -76,14 +100,18 @@ Route::get('/about-us', function(){
 
 Route::get('/', function () {
     return view('frontpage');
-});
+})->name('home');
+
+Route::get('/gallery', function(){
+    return view('gallery');
+})->name('gallery');
 
 Route::get('/dashboard', function () {
     $user = auth()->user();
     $orderhistory = Order::all()->where('user_id', $user->id)->sortByDesc("created_at");
     
     return view('dashboard', compact('orderhistory'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
 

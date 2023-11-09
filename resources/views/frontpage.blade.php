@@ -14,7 +14,7 @@
         </nav>
 
         <div class="text-box">
-            <a href="#"><img src="images/WhatsApp_Image_2023-09-18_at_18.10.09-removebg.png"></a>
+            <a href="#"><img src="{{asset('assets/img/WhatsApp_Image_2023-09-18_at_18.10.09-removebg.png')}}"></a>
             <h1>The best kota spot in Midrand</h1>
             <p>One kota from us is all you need to satisfy all your hunger needs. <br> 
                 All you have to do is make an order, collect it at our store and enjoy the ride. 

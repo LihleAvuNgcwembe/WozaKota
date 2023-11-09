@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Woza Woza Kota Place</title>
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">-->
+@extends('layouts.layout')
+@section('css')
     <link rel="stylesheet" href="{{ asset('assets/css/checkout.css') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
+@endsection
 
-    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />-->
-</head>
-
-<body>
-
-
-    <div class="container ">
+@section('main')
+    <div class="containerCheckOutTable">
         <div class='row'>
             <div class='col-md-12'>
                 <div class="card">
@@ -79,14 +64,13 @@
                                 <tr>
                                     <td colspan="5" style="text-align:right;">
                                         <form action="/session" method="POST">
-                                            <a href="{{ url('/') }}" class="btn btn-danger"> <i
+                                            <a href="{{ url('/menu') }}" class="btn btn-danger"> <i
                                                     class="fa fa-arrow-left"></i> Continue Shopping</a>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <!-- <input type='hidden' name="total" value="25">-->
                                             <!--<input type='hidden' name="productname" value="Lebza Kota">-->
                                             <button class="btn btn-success bg-black" type="button"
-                                                data-modal-target="payment-option"
-                                                data-modal-toggle="payment-option">
+                                                data-modal-target="payment-option" data-modal-toggle="payment-option">
                                                 Checkout
                                             </button>
 
@@ -100,8 +84,7 @@
                                                         <!-- Modal header -->
                                                         <div
                                                             class="flex items-start justify-between p-4 border-b border-black rounded-t dark:border-gray-600">
-                                                            <h3
-                                                                class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                                                                 Payment Options
                                                             </h3>
                                                             <button type="button"
@@ -120,36 +103,34 @@
                                                         <!-- Modal body -->
                                                         <div class="p-6 space-y-6 text-left">
                                                             <h3 class="underline">pay via secure gateway:</h3>
-                                                            <p
-                                                                class="text-base leading-relaxed">
+                                                            <p class="text-base leading-relaxed">
                                                                 when you click on the pay online button you will
                                                                 be redirected to payement stripe checkout page
                                                                 where ypu will be asked details such as your card details
                                                                 and personal information
                                                             </p>
                                                             <h3 class="underline">pay upon collection:</h3>
-                                                            <p
-                                                                class="text-base leading-relaxed ">
-                                                                When you click on the pay upon collection, 
+                                                            <p class="text-base leading-relaxed ">
+                                                                When you click on the pay upon collection,
                                                                 your will be generated and you will recieve the order
-                                                                via email. 
+                                                                via email.
                                                             </p>
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div
                                                             class="flex items-center p-6 space-x-2  border-t border-black rounded-b dark:border-gray-600">
-                                                            <button data-modal-hide="payment-option" type="submit"
+                                                            <button data-modal-hide="payment-option" type="button"
                                                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">I
-                                                                pay upon collection
+                                                               <a href="{{route('success-collection')}}"> pay upon collection</a>
                                                             </button>
-                                                            <button data-modal-hide="payment-option" type="submit"  id="checkout-live-button"
+                                                            <button data-modal-hide="payment-option" type="submit"
+                                                                id="checkout-live-button"
                                                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">
                                                                 Pay online
-                                                        </button>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                         </form>
                                     </td>
                                 </tr>
@@ -159,14 +140,15 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
     </div>
+@endsection
 
-    </div>
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
-</body>
 <script type="text/javascript">
     $(".cart_update").change(function(e) {
         e.preventDefault();
@@ -207,5 +189,4 @@
         }
     });
 </script>
-
-</html>
+@endsection

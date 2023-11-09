@@ -28,9 +28,16 @@
             <ul class="flex flex-col justify-item-center font-medium p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm  md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
                 style="background-color: #054979">
                 <li class="lg:w-52 sm:-100 text-center ">
-                    <a href="{{ route('menu') }}" class="block py-2 pl-3 pr-4 text-white  rounded hover:bg-[#005a92]"
+                    <a href="{{ route('home') }}" class="block py-2 pl-3 pr-4 text-white  rounded hover:bg-[#005a92]"
                         style="font-family: 'trebuchet MS', sans-serif" aria-current="page">
                         Home
+                    </a>
+                </li>
+                <li class="lg:w-52 sm:w-100 text-center">
+                    <a href="{{ route('menu') }}"
+                        class="block py-2 pl-3 pr-4 text-white rounded hover:bg-[#005a92]"
+                        style="font-family: 'trebuchet MS', sans-serif">
+                        Menu
                     </a>
                 </li>
                 <li class="lg:w-52 sm:w-100 text-center">
@@ -44,6 +51,12 @@
                     <a href="{{ route('aboutUs') }}" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-[#005a92]"
                         style="font-family: 'trebuchet MS', sans-serif">
                         About Us
+                    </a>
+                </li>
+                <li class="lg:w-52 sm:w-100 text-center">
+                    <a href="{{ route('gallery') }}" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-[#005a92]"
+                        style="font-family: 'trebuchet MS', sans-serif">
+                        Gallery
                     </a>
                 </li>
             </ul>

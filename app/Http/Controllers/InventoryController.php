@@ -12,7 +12,7 @@ class InventoryController extends Controller
 {
     public function index(): View
     {
-        $inventory = Inventory::with('Category')->paginate(20);
+        $inventory = Inventory::with('categories')->paginate(4);
         return view('admin.Inventory.admin_inventory', compact('inventory'));
     }
 
@@ -64,8 +64,51 @@ class InventoryController extends Controller
         return redirect(route('admin.inventory'))->with('success', 'new Item Inserted');
     }
 
-    public function edit(Inventory $inventory): View 
+    public function edit($id): View 
     {
-        return view('admin.Inventory.admin_inven_update', compact('inventory'));
+        $inventory = Inventory::where('id',$id)->first();
+        $categories = Category::all();
+        return view('admin.Inventory.admin_inven_edit',compact('inventory', 'categories'));
+    }
+
+    public function update(Request $request, $id){
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'quantity' => ['required', 'numeric'],
+            'price' => ['required', 'decimal:2'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'status' => ['required', 'string'],
+            'category' => ['required', 'numeric'],
+        ]);
+
+        
+        $inven = Inventory::where('id',$id)->first();
+        
+        if($request->hasFile('image'))
+         {
+             $destinationPath = 'public/image/inventory/';
+             $image = $request->file('image');
+             $image_name = $image->getClientOriginalName();
+             $path = $request -> file('image')->storeAs($destinationPath,$image_name);
+             $inven->image = $image_name;
+         }  
+
+         $inven->inven_name = $request->name;
+         $inven->quantity = $request->quantity;
+         $inven->inven_price = $request->price;
+         $inven->status = $request->status;
+         $inven->category = $request->category;
+         $inven->updated_at = Carbon::now();
+         $inven->save();
+
+         return back()->with('success','item updated');
+
+    }
+
+    public function destroy($id){
+        $inven = Inventory::where('id',$id)->first();
+        $inven->delete();
+        return back()->with('error',"item deleted");
     }
 }

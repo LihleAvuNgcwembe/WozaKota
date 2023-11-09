@@ -25,7 +25,7 @@ class Inventory extends Model
         'image'
     ];
 
-    public function category():BelongsTo
+    public function categories():BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
